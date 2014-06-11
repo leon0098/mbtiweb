@@ -1,42 +1,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript" src="/static/js/include.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>MBIT测试</title>
-<style type="text/css">
-body {
-	font-family:宋体;
-	font-size:1.1em;
-}
-
-.main {
-	border:1px solid gray;
-	width: 50%;
-	margin: 10% auto 0 auto;
-}
-
-.title {
-	margin-left: 2%;
-	margin-top: 1%;
-	font-weight: bold;
-}
-
-.hint {
-	margin-left: 4%;
-}
-
-.button {
-	font-family:宋体;
-	font-size:1.1em;
-	margin: 0 0 1% 45%;
-}
-</style>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("input[type='radio']").click(function() {
+			$("#content").html("<b>Hello world!</b>");
+		});
+	});
+</script>
 </head>
 <body>
-	<div class="main">
-		<p class="title">MBTI测试:</p>
-		<p class="hint">1、请选择最接近你真实想法的选项。</p>
-		<input type="button" value="开始答题" class="button"/>
+	<div id="content" class="main">
+		<p class="title">1、认识你的人倾向形容你为： </p>
+		<p class="hint"><input type="radio" name="option"/>A 热情和敏感。</p>
+		<p class="hint"><input type="radio" name="option"/>B 逻辑和明确。</p>
 	</div>
 </body>
 </html>
