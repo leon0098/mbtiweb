@@ -12,12 +12,14 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
 #解决admin后台中文报错问题
+import os
 import sys
+
+
 reload(sys)
 sys.setdefaultencoding('gbk')  # @UndefinedVariable
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -90,7 +92,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 STATIC_URL = '/static/'
 
-#解决访问不到静态文件的问题！
+#解决访问不到静�?文件的问题！
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
