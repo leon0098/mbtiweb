@@ -1,0 +1,26 @@
+body {
+	font-family:ËÎÌו;
+	font-size:1.1em;
+}
+
+.main {
+	border:1px solid gray;
+	width: 50%;
+	margin: 10% auto 0 auto;
+}
+
+.title {
+	margin-left: 2%;
+	margin-top: 1%;
+	font-weight: bold;
+}
+
+.hint {
+	margin-left: 4%;
+}
+
+.button {
+	font-family:ËÎÌו;
+	font-size:1.1em;
+	margin: 0 0 1% 45%;
+}
