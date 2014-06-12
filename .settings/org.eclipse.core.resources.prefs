@@ -1,3 +1,7 @@
 eclipse.preferences.version=1
 encoding//MBTIWeb/settings.py=utf-8
+encoding//common/sql.py=utf-8
+encoding//test/readExcelTest.py=utf-8
+encoding//tool/db/clean.py=utf-8
+encoding//tool/db/importDB.py=utf-8
 encoding/<project>=UTF-8

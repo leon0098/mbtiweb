@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 '''
 Created on Jun 12, 2014
 
@@ -5,7 +7,7 @@ Created on Jun 12, 2014
 '''
 import types
 
-
+#生成create sql语句
 def createSql(tableName, fieldNames, fieldValues):
     delimiter = ','
     fieldSql = delimiter.join(fieldNames)
@@ -13,7 +15,7 @@ def createSql(tableName, fieldNames, fieldValues):
     sql = "insert into " + tableName + " (" + fieldSql + ") values (" + valueSql + ");"
     return sql
     
-    
+#根据list内容生成sql语句    
 def listToSqlString(list):
     listStr = ""
     for i in range(len(list)):
