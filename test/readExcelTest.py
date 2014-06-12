@@ -4,6 +4,10 @@ Created on Jun 11, 2014
 
 @author: xiafeng
 '''
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8') # @UndefinedVariable
+
 import xlrd
 
 from common.sql import createSql
@@ -37,12 +41,14 @@ for i in range(len(sheetNames)):
     #取得sheet行数
     nrows = table.nrows
     print "nrows:" + str(nrows)
-    #取所有字段值
+    #取每一行数据生成对应的create sql语句
+    f = file("create.sql","w")
     for j in range(nrows-1):
         print "---------------------"
         values = table.row_values(j+1)
         sql = createSql(tableName,fields,values)
+        f.write(sql+"\n")
         print sql
-            
+    f.close        
 
     
