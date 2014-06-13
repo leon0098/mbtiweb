@@ -14,9 +14,12 @@
 </head>
 <body>
 	<div id="content" class="main">
-		<p class="title">1、认识你的人倾向形容你为： </p>
-		<p class="hint"><input type="radio" name="option"/>A 热情和敏感。</p>
-		<p class="hint"><input type="radio" name="option"/>B 逻辑和明确。</p>
+		<p class="title">{{question.content}}</p>
+		{% for option in options %}
+			<p class="hint">
+				<input type="radio" name="option" />{{option.serialno}}、{{option.content}}
+			</p>
+		{% endfor %}
 	</div>
 </body>
 </html>

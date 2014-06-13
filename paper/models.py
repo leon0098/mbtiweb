@@ -9,7 +9,7 @@ class Paper(models.Model):
         return u'%s' % (self.name)
     
 class Question(models.Model):
-    serialno = models.CharField(max_length=32)
+    serialno = models.IntegerField()
     content = models.CharField(max_length=1024)
     paper = models.ForeignKey(Paper)
     def __unicode__(self):
@@ -18,6 +18,7 @@ class Question(models.Model):
 class Option(models.Model):
     serialno = models.CharField(max_length=32)
     content = models.CharField(max_length=1024)
+    type = models.CharField(max_length=32)
     question = models.ForeignKey(Question)
     def __unicode__(self):
         return u'%s' % (self.content) 
