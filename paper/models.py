@@ -1,3 +1,5 @@
+import json
+
 from django.db import models
 
 
@@ -22,6 +24,14 @@ class Option(models.Model):
     question = models.ForeignKey(Question)
     def __unicode__(self):
         return u'%s' % (self.content) 
+    def toJSON(self):
+        fields = []
+        for field in self._meta.fields:
+            fields.append(field.name)
+        d = {}
+        for attr in fields:
+            d[attr] = getattr(self, attr)
+        return json.dumps(d)
     
 class Answer(models.Model):
     description = models.CharField(max_length=1024,null=True)
