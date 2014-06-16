@@ -1,0 +1,7 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<p class="title">{{question.content}}</p>
+{% for option in options %}
+	<p class="hint">
+		<input type="radio" name="option" onclick="optionChange()"/>{{option.serialno}}、{{option.content}}
+	</p>
+{% endfor %}

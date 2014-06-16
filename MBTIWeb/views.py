@@ -8,6 +8,8 @@ import json
 
 from django.http.response import HttpResponse
 from django.shortcuts import render_to_response
+from django.template.context import Context
+from django.template.loader import get_template
 
 from common.jsonUtil import MyEncoder
 from paper.models import Question, Option
@@ -27,6 +29,13 @@ def jsonTest(request):
     jsonData = {}
     jsonData["question"] = MyEncoder().default(question)
     jsonData["options"] = MyEncoder().default(options)
-    return HttpResponse(json.dumps(jsonData), content_type="application/json")
+#     return HttpResponse(json.dumps(jsonData), content_type="application/json")
+#     return render_to_response('question_content.html', locals())
+    t = get_template('question_content.html')  
+    content_html = t.render(Context(locals()))
+    jsonReturn = {'content_html': content_html,'success': True} 
+    return HttpResponse(json.dumps(jsonReturn),mimetype="application/json")
+    
+    
 
 
