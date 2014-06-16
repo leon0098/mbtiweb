@@ -25,8 +25,8 @@ def jsonTest(request):
     question = Question.objects.filter(paper_id=1)[1]
     options = Option.objects.filter(question_id=question.id)
     jsonData = {}
-    jsonData["question"] = json.loads(MyEncoder().default(question))
-    jsonData["options"] = json.loads(MyEncoder().default(options))
+    jsonData["question"] = MyEncoder().default(question)
+    jsonData["options"] = MyEncoder().default(options)
     return HttpResponse(json.dumps(jsonData), content_type="application/json")
 
 
