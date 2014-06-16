@@ -29,12 +29,7 @@ def jsonTest(request):
     jsonData = {}
     jsonData["question"] = MyEncoder().default(question)
     jsonData["options"] = MyEncoder().default(options)
-#     return HttpResponse(json.dumps(jsonData), content_type="application/json")
-#     return render_to_response('question_content.html', locals())
-    t = get_template('question_content.html')  
-    content_html = t.render(Context(locals()))
-    jsonReturn = {'content_html': content_html,'success': True} 
-    return HttpResponse(json.dumps(jsonReturn),mimetype="application/json")
+    return render_to_response('question_content.html', locals())
     
     
 

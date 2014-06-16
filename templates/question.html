@@ -5,27 +5,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>MBIT测试</title>
 <script type="text/javascript">
-/*
-	$(document).ready(function() {
-		$("input[type='radio']").click(function() {
-			$("#content").html("<b>Hello world!</b>");
-		});
-		$("input[type='radio']").click(function() {
-			$.get("/jsonTest",function(data,status){
-			    alert("Data: " + data + "\nStatus: " + status);
-			    obj = JSON.parse(data);
-			    alert(obj);
-			});
-			$.getJSON("/jsonTest", function(json){
-				  alert("JSON Data: " + json.content_html);
-				  $("#content").html(json.content_html);
-				});
-		});
-	});
-*/	
 	function optionChange(){
-		$.getJSON("/jsonTest", function(json){
-			  $("#content").html(json.content_html);
+		$.get("/jsonTest",function(data,status){
+		    $("#content").html(data);
 		});
 	}
 </script>
