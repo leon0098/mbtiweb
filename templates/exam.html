@@ -6,16 +6,16 @@
 <title>MBIT测试</title>
 <script type="text/javascript">
 	function startExam(){
-		paperId = $("#paper_id").val();
-		csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val();
+		var paper_id = $("#paper_id").val();
+		var csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val();
 		$.post("/startExam/",
 		{
-			csrfmiddlewaretoken:csrfmiddlewaretoken,
-			paper_id:paperId
+			//csrfmiddlewaretoken:csrfmiddlewaretoken,
+			paper_id:paper_id
 		},
 		function(data,status){
 			if(status="success"){
-				location.href = "/question";
+				location.href = "/question?paper_id="+paper_id+"&user_paper_id="+data;
 			}else{
 				alert("fail");
 			}
@@ -28,7 +28,6 @@
 		<p class="title">MBTI测试:</p>
 		<p class="hint">1、请选择最接近你真实想法的选项。</p>
 		<input type="button" value="开始答题" class="button" onclick="startExam()"/>
-		{% csrf_token %}
 		<input type="hidden" name="paper_id" id="paper_id" value="1"/>
 	</div>
 </body>
