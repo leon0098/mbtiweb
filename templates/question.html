@@ -16,7 +16,7 @@
 	}
 	
 	function optionChange(){
-		var csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val();
+		//var csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val();
 		var user_paper_id = $("#user_paper_id").val();
 		var question_id = $("#question_id").val();
 		var option_id = $("input[name='option']:checked").val()
@@ -29,6 +29,7 @@
 			},
 			function(data,status){
 				if(status="success"){
+					//动态显示下一道试题
 					getNextQuestion();
 				}else{
 					alert("fail");

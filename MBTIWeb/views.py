@@ -23,13 +23,11 @@ def question(request):
             qno = int(qno)+1
         else:
             qno = 0
-            
         if "user_paper_id" in request.GET and request.GET["user_paper_id"]:
             user_paper_id = request.GET["user_paper_id"]
             
         paper_id = request.GET["paper_id"]
         totalNum = len(Question.objects.all())
-        
         #用户回答完所有试题时
         if qno == totalNum:      
             return render_to_response('report.html', locals())
