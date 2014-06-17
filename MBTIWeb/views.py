@@ -4,15 +4,14 @@ Created on Jun 5, 2014
 
 @author: xiafeng
 '''
-import json
 
-from django.http.response import HttpResponse
+import uuid
+
 from django.shortcuts import render_to_response
-from django.template.context import Context
-from django.template.loader import get_template
+from django.template.context import RequestContext
 
 from common.jsonUtil import MyEncoder
-from paper.models import Question, Option
+from paper.models import Question, Option, User_Paper
 
 
 def index(request):
@@ -30,6 +29,21 @@ def jsonTest(request):
     jsonData["question"] = MyEncoder().default(question)
     jsonData["options"] = MyEncoder().default(options)
     return render_to_response('question_content.html', locals())
+
+def startExam(request):
+    if "paper_id" in request.POST:
+        paperId = request.POST["paper_id"]
+        if not paperId:
+            message = "fail"
+            return render_to_response('exam.html', locals(), context_instance=RequestContext(request))
+        else:
+            serialNo = 1
+            userId = uuid.uuid1()
+            userPaper = User_Paper(paper_id=paperId,user_id=userId,serialno=serialNo)
+            userPaper.save()    
+            message = "success"       
+            return render_to_response('exam.html', locals(), context_instance=RequestContext(request))
+    
     
     
 

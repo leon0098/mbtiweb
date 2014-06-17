@@ -33,7 +33,7 @@ class Answer(models.Model):
         return u'%s %s' % (self.question, self.option)
     
 class User_Paper(models.Model):
-    user_id = models.IntegerField()
+    user_id = models.CharField(max_length=64)
     paper = models.ForeignKey(Paper)
     serialno = models.IntegerField()
     def __unicode__(self):

@@ -92,7 +92,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 STATIC_URL = '/static/'
 
-#解决访问不到静�?文件的问题！
+#解决访问不到静态文件的问题！
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
@@ -103,4 +103,9 @@ STATIC_ROOT = ''
 #模板目录
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates').replace('\\','/'),
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.csrf',
 )
