@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     ('^index/$', index),
     (r'^exam/$', TemplateView.as_view(template_name="exam.html")),
-    ('^question$', question),
+    ('^question/$', question),
     ('^startExam/$', startExam),
     ('^saveAnswer/$', saveAnswer),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

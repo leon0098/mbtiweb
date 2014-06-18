@@ -111,3 +111,5 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.csrf',
 )
 '''
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

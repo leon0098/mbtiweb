@@ -6,10 +6,8 @@
 <title>MBIT测试</title>
 <script type="text/javascript">
 	function getNextQuestion(){
-		paper_id = $("#paper_id").val();
-		qno = $("#qno").val();
-		var user_paper_id = $("#user_paper_id").val();
-		var url = "/question?paper_id="+paper_id+"&qno="+qno+"&user_paper_id="+user_paper_id;
+		var qno = $("#qno").val();
+		var url = "/question?qno="+qno;
 		$.get(url,function(data,status){
 		    $("#content").html(data);
 		});
@@ -17,13 +15,11 @@
 	
 	function optionChange(){
 		//var csrfmiddlewaretoken = $("input[name='csrfmiddlewaretoken']").val();
-		var user_paper_id = $("#user_paper_id").val();
 		var question_id = $("#question_id").val();
 		var option_id = $("input[name='option']:checked").val()
 		$.post("/saveAnswer/",
 			{
 				//csrfmiddlewaretoken:csrfmiddlewaretoken,
-				user_paper_id:user_paper_id,
 				question_id:question_id,
 				option_id:option_id
 			},
@@ -40,10 +36,8 @@
 </head>
 <body>
 	<div id="content" class="main">
-		<input type="hidden" id="user_paper_id" value="{{user_paper_id}}">
 		<input type="hidden" id="question_id" value="{{question.id}}">
 		<input type="hidden" id="qno" value="{{qno}}">
-		<input type="hidden" id="paper_id" value="{{paper_id}}">
 		<p class="title">{{question.content}}</p>
 		{% for option in options %}
 			<p class="hint">
