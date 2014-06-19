@@ -20,4 +20,5 @@ urlpatterns = patterns('',
     ('^question/$', question),
     ('^startExam/$', startExam),
     ('^saveAnswer/$', saveAnswer),
+    ('^report/$', TemplateView.as_view(template_name="report.html")),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
