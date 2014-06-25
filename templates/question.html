@@ -5,12 +5,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>MBIT测试</title>
 <script type="text/javascript">
-	function getNextQuestion(){
+	function getNextPage(){
+		//如果用户答完试题就显示报告页面，否则显示下一道试题
+		var totalNum = {{ request.session.totalNum }}
 		var qno = $("#qno").val();
-		var url = "/question?qno="+qno;
-		$.get(url,function(data,status){
-		    $("#content").html(data);
-		});
+		if(parseInt(totalNum-1) == parseInt(qno)){
+			location.href = "/report";
+		}else{
+			var url = "/question?qno="+qno;
+			$.get(url,function(data,status){
+			    $("#content").html(data);
+			});
+		}
 	}
 	
 	function optionChange(){
@@ -25,8 +31,8 @@
 			},
 			function(data,status){
 				if(status="success"){
-					//动态显示下一道试题
-					getNextQuestion();
+					//显示下一个页面
+					getNextPage();
 				}else{
 					alert("fail");
 				}
@@ -35,6 +41,7 @@
 </script>
 </head>
 <body>
+	
 	<div id="content" class="main">
 		<input type="hidden" id="question_id" value="{{question.id}}">
 		<input type="hidden" id="qno" value="{{qno}}">

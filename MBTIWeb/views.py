@@ -9,6 +9,7 @@ import uuid
 
 from django.http.response import HttpResponse
 from django.shortcuts import render_to_response
+from django.template.context import RequestContext
 
 from paper.models import Question, Option, User_Paper, User_Answer
 
@@ -41,16 +42,15 @@ def question(request):
         qno = int(qno)+1
     else:
         qno = 0
-    totalNum = len(Question.objects.all())
-    #用户回答完所有试题时
-    if qno == totalNum:      
-        return render_to_response('report.html', locals())
     
     question = Question.objects.filter(paper_id=paper_id)[int(qno)]
     options = Option.objects.filter(question_id=question.id)
     #显示第一道问题时
     if qno == 0:
-        return render_to_response('question.html', locals())
+        #查询试题总数并存入session
+        totalNum = len(Question.objects.all())
+        request.session["totalNum"] = totalNum  
+        return render_to_response('question.html', locals(), RequestContext(request))
     #显示下一道试题
     else:
         return render_to_response('question_content.html', locals())

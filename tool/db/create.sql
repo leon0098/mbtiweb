@@ -11,3 +11,8 @@ insert into paper_option (id,serialno,content,answer_type,question_id) values (5
 insert into paper_option (id,serialno,content,answer_type,question_id) values (6.0,'B','你对目前状况的实际认知。','S',3.0);
 insert into paper_option (id,serialno,content,answer_type,question_id) values (7.0,'A','友善及重要的。','E',4.0);
 insert into paper_option (id,serialno,content,answer_type,question_id) values (8.0,'B','另有目的。','I',4.0);
+insert into paper_report_template (id,name,description) values (1.0,'ISTJ','ISTJ');
+insert into paper_report_paragraph_template (id,serialno,title,content,report_template_id) values (1.0,1.0,'标题1','内容1',1.0);
+insert into paper_report_paragraph_template (id,serialno,title,content,report_template_id) values (2.0,2.0,'标题2','内容2',1.0);
+insert into paper_report_paragraph_template (id,serialno,title,content,report_template_id) values (3.0,3.0,'标题3','内容3',1.0);
+insert into paper_report_paragraph_template (id,serialno,title,content,report_template_id) values (4.0,4.0,'标题4','内容4',1.0);
