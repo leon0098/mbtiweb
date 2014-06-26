@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.views.generic.base import TemplateView
 
 from MBTIWeb import settings
-from MBTIWeb.views import index, question, startExam, saveAnswer
+from MBTIWeb.views import index, question, startExam, saveAnswer, report
 
 
 admin.autodiscover()
@@ -20,5 +20,5 @@ urlpatterns = patterns('',
     ('^question/$', question),
     ('^startExam/$', startExam),
     ('^saveAnswer/$', saveAnswer),
-    ('^report/$', TemplateView.as_view(template_name="report.html")),
+    ('^report/$', report),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -42,7 +42,7 @@ class User_Paper(models.Model):
     paper = models.ForeignKey(Paper)
     serialno = models.IntegerField()
     def __unicode__(self):
-        return u'%s %s' % (self.userId, self.paper)    
+        return u'%s %s' % (self.user_id, self.paper)    
     
 #用户测试答案信息       
 class User_Answer(models.Model):
