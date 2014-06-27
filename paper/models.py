@@ -67,13 +67,12 @@ class Report_Paragraph_Template(models.Model):
     content = models.TextField()
     def __unicode__(self):
         return u'%s %s' % (self.serialno, self.title) 
-
+ 
 #用户报告信息              
 class User_Report(models.Model):
     user_paper = models.ForeignKey(User_Paper)
     report_template = models.ForeignKey(Report_Template)
     def __unicode__(self):
-        return u'%s %s' % (self.user_paper, self.report_template)     
-    
+        return u'%s %s' % (self.user_paper, self.report_template)    
    
     

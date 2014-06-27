@@ -8,14 +8,14 @@
 	$(document).ready(function() {
 		var ctx = document.getElementById("myChart").getContext("2d");
 		var data = {
-			labels : ["Eating","Drinking","Sleeping","Designing","Coding","Partying","Running"],
+			labels : ["外向（E）","实感（S）","思考（T）","判断（J）","内向（I）","直觉（N）","情感（F）","知觉（P）"],
 			datasets : [
 				{
 					fillColor : "rgba(151,187,205,0.5)",
 					strokeColor : "rgba(151,187,205,1)",
 					pointColor : "rgba(151,187,205,1)",
 					pointStrokeColor : "#fff",
-					data : [28,48,40,19,96,27,100]
+					data : [{{EN}},{{SN}},{{TN}},{{JN}},{{IN}},{{NN}},{{FN}},{{PN}}]
 				}
 			]
 		}
@@ -25,6 +25,14 @@
 </script>
 </head>
 <body>
-	<canvas id="myChart" width="400" height="400"></canvas>
+	<div class="report_main">
+		<p class="report_title" >{{report.description}}</p>
+		<p class="paragraph_title" >一、您的MBTI图形</p>
+		<center><canvas id="myChart" width="400" height="400"></canvas></center>
+		{% for paragraph in report_paragraph %}
+		<p class="paragraph_title" >{{paragraph.title}}</p>
+		<p class="paragraph_content" >{{paragraph.content}}</p>
+		{% endfor %}
+	</div>
 </body>
 </html>

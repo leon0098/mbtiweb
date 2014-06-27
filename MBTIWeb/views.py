@@ -11,7 +11,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 
-from paper.models import Question, Option, User_Paper, User_Answer
+from paper.models import Question, Option, User_Paper, User_Answer,Report_Template
 
 
 def index(request):
@@ -69,60 +69,87 @@ def saveAnswer(request):
 
 #生成用户报告
 def report(request):
-#     user_paper_id = request.session["user_paper_id"]
-#     answers = User_Answer.objects.filter(user_paper_id=user_paper_id)
+    user_paper_id = request.session["user_paper_id"]
     #查询用户试卷信息
-    paper = User_Paper.objects.get(id = 21)
-    print paper
+    paper = User_Paper.objects.get(id = 25)
 #     answers = paper.user_answer_set.all()
     #查询用户答案基本信息
     answers = paper.user_answer_set.all()
-    print answers
     #查询用户答案对应的选项信息
     answers_ids = answers.values_list("option_id",flat=True)
-    print answers_ids
 #     answers = User_Answer.objects.filter(user_paper_id = 21)
     options = Option.objects.filter(id__in=answers_ids)
-    print options
     #查询用户选项类型信息
     options_types = options.values_list("answer_type",flat=True)
-    print options_types
     
     ENum = options.filter(answer_type="E").count()
-    print ENum
     INum = options.filter(answer_type="I").count()
-    print INum
     if(ENum>=INum):
         EIType = "E"
     else:
-        EIType = "I"   
-        
+        EIType = "I"
+    if(ENum==0):
+        EN = 0
+        IN = 100
+    elif(INum==0):
+        EN = 100
+        IN = 0        
+    else:
+        EN = round(100/(ENum+INum)*ENum)
+        IN = 100-EN 
+           
     SNum = options.filter(answer_type="S").count()
-    print SNum
     NNum = options.filter(answer_type="N").count()
-    print NNum
     if(SNum>=NNum):
         SNType = "S"
     else:
         SNType = "N"  
-         
+    if(SNum==0):
+        SN = 0
+        NN = 100
+    elif(NNum==0):
+        SN = 100
+        NN = 0        
+    else:
+        SN = round(100/(SNum+NNum)*SNum)
+        NN = 100-SN
+             
     TNum = options.filter(answer_type="T").count()
-    print TNum
     FNum = options.filter(answer_type="F").count()
-    print FNum
     if(TNum>=FNum):
         TFType = "T"
     else:
         TFType = "F" 
-            
+    if(TNum==0):
+        TN = 0
+        FN = 100
+    elif(FNum==0):
+        TN = 100
+        FN = 0        
+    else:
+        TN = round(100/(TNum+FNum)*TNum)
+        FN = 100-TN
+                    
     JNum = options.filter(answer_type="J").count()
-    print JNum
     PNum = options.filter(answer_type="P").count()
-    print PNum   
     if(JNum>=PNum):
         JPType = "J"
     else:
         JPType = "P"
-        
+    if(JNum==0):
+        JN = 0
+        PN = 100
+    elif(PNum==0):
+        JN = 100
+        PN = 0        
+    else:
+        JN = round(100/(JNum+PNum)*JNum)
+        PN = 100-JN
+                
     user_type = EIType+SNType+TFType+JPType
-    print user_type
+    print locals()
+    
+    #根据用户类型查询报告模板信息
+    report = Report_Template.objects.get(name=user_type)
+    report_paragraph = report.report_paragraph_template_set.all()
+    return render_to_response('report.html', locals())
