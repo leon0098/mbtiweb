@@ -36,7 +36,6 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -67,10 +66,23 @@ WSGI_APPLICATION = 'MBTIWeb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+'''
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',  # 设置为mysql数据库
+        'NAME': 'mbti',  # mysql数据库名
+        'USER': 'mbti',  # mysql用户名，留空则默认为当前linux用户名
+        'PASSWORD': 'mbti_mysql_passw0rd',  # mysql密码
+        'HOST': '',  # 留空默认为localhost
+        'PORT': '',  # 留空默认为3306端口
     }
 }
 
