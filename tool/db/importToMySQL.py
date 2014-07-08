@@ -44,7 +44,7 @@ f.close
     
 #批量执行sql脚本    
 f = file('create.sql')
-cx = MySQLdb.connect(host='localhost',user='mbti',passwd='mbti_mysql_passw0rd',db='mbti',port=3306,charset="utf8")
+cx = MySQLdb.connect(host='localhost',user='mbti',passwd='randyhost_mbti_passw0rd',db='mbti',port=3306,charset="utf8")
 cu = cx.cursor() 
 while True:
     sql = f.readline()
