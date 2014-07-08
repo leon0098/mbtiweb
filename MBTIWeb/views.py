@@ -71,7 +71,7 @@ def saveAnswer(request):
 def report(request):
     user_paper_id = request.session["user_paper_id"]
     #查询用户试卷信息
-    paper = User_Paper.objects.get(id = 25)
+    paper = User_Paper.objects.get(id=int(user_paper_id))
 #     answers = paper.user_answer_set.all()
     #查询用户答案基本信息
     answers = paper.user_answer_set.all()
