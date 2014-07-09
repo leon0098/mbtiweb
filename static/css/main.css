@@ -43,3 +43,7 @@ body {
 	color:white;
 	background-color:red;
 }
+
+.error{
+	margin: 10% auto 0 auto;
+}
