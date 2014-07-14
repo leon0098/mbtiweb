@@ -1,0 +1,12 @@
+WSGIScriptAlias / "/usr/local/src/mbtiweb/MBTIWeb/wsgi.py"
+WSGIPythonPath /usr/local/src/mbtiweb
+<Directory "/usr/local/src/mbtiweb">
+Order deny,allow
+Allow from all
+</Directory>
+
+Alias /static "/usr/local/src/mbtiweb/static"
+<Directory "/usr/local/src/mbtiweb/static">
+Order deny,allow
+Allow from all
+</Directory>

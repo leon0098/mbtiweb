@@ -2,6 +2,7 @@
 #使本文件能写中文
 
 from django.db import models
+from redactor.fields import RedactorField
 
 
 #试卷基本信息
@@ -64,7 +65,7 @@ class Report_Paragraph_Template(models.Model):
     report_template = models.ForeignKey(Report_Template)
     serialno = models.IntegerField()
     title = models.CharField(max_length=128)
-    content = models.TextField()
+    content = RedactorField()
     def __unicode__(self):
         return u'%s %s' % (self.serialno, self.title) 
  

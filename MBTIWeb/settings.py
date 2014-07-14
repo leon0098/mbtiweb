@@ -47,7 +47,15 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 #     'django.contrib.sites',
     'paper',
+    'redactor',
 )
+
+REDACTOR_OPTIONS = {'lang':'zh_cn'}
+
+MEDIA_ROOT = '/work/workspace/'
+REDACTOR_UPLOAD = 'uploads/'
+
+REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.UUIDUploader'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -103,6 +111,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 STATIC_URL = '/static/'
+MEDIA_URL = '/'
 
 #解决访问不到静态文件的问题！
 STATICFILES_DIRS = (
@@ -110,7 +119,8 @@ STATICFILES_DIRS = (
 )
 
 #指定admin后台样式文件位置
-STATIC_ROOT = ''
+STATIC_ROOT = '/static/'
+
 
 #模板目录
 TEMPLATE_DIRS = (
