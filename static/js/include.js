@@ -21,3 +21,7 @@ includeJS("plugin/jquery-ui-1.10.4/js/jquery-ui-1.10.4.custom.js");
 
 //html图表
 includeJS("plugin/Chart/Chart.min.js");
+
+//bootstrap
+includeJS("plugin/bootstrap-3.2.0-dist/js/bootstrap.js");
+includeCSS("plugin/bootstrap-3.2.0-dist/css/bootstrap.css");
