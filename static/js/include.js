@@ -8,6 +8,7 @@ function includeCSS(src){
 
 //页面全局样式
 includeCSS("css/main.css");
+includeCSS("css/index.css");
 
 //全局js
 includeJS("js/main.js");
